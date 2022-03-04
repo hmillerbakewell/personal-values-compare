@@ -1,0 +1,35 @@
+#comparisons {
+    max-width: 30em;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 1em;
+    grid-row-gap: 1em;
+}
+
+#assignment {
+    max-width: 30em;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+#intro {
+    max-width: 30em;
+    margin: auto;
+}
+
+
+.header {
+    text-align: center;
+    padding: 1em;
+}
+
+.two-wide {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.definition {
+    text-align: center;
+  }
