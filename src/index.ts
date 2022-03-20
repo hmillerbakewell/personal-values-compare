@@ -191,7 +191,7 @@ function clear_choice_div() {
 function draw_assignment(values: string[]) {
     let div = document.getElementById("assignment")
     div!.classList.remove("invisible")
-    div!.innerHTML = `<h1 class='header'>Your top values, ranked</h1>` + values.map(v => `<div class='valueReport'><h2>${v}</h2><p>${(Definitions as any)[v]}</p></div>`).join("\n")
+    div!.innerHTML = `<h1>Your top values, ranked</h1>` + values.map(v => `<div class='valueReport'><h2>${v}</h2><p>${(Definitions as any)[v]}</p></div>`).join("\n")
 }
 
 function rFrom<T>(weighted: [T, number][]): T {
