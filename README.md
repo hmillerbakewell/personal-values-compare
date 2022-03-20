@@ -8,41 +8,34 @@ assuming a poset structure on values.
 
 These values are:
 
- - Adventure: Finding new excitements
- - Independence: Living without routine assistance
- - Appearance: Beauty, presence, and fashion
- - Boldness: Doing what few dare to do
- - Compassion: Easing the pains of strangers
- - Challenge: Pushing yourself, regardless of the goal
- - Community: Being part of a wider group
- - Competency: Building skills in a particular field
- - Visual Arts and Crafts: Creating or admiring
- - Curiosity: Finding new ideas
- - Determination: Finishing what you start
- - Faith: Connection to something beyond humanity
- - Fame: Being known to all
- - Friendships: Deep relationships with a select few
- - Influence: Power over others
- - Justice: Righting the wrongs you see
- - Kindness: Supporting the needs of others
- - Leadership: People turning to you for guidance
- - Learning: Amassing knowledge and skills
- - Love: Finding people to share your heart with
- - Performing Arts: Attending or performing
+ - Adventure: Finding new excitements,
+ - Appearance: Beauty, presence, and fashion,
+ - Challenge: Pushing yourself, regardless of the goal,
+ - Community: Being part of a wider group,
+ - Curiosity: Finding new ideas,
+ - Dancing: For fun or exercise,
+ - Faith: Connection to something beyond humanity,
+ - Friendships: Deep relationships with a select few,
+ - Games: Boardgames, cards, computer games, etc.,
+ - Independence: Living without routine assistance,
+ - Learning: Amassing knowledge and skills,
+ - Love: Finding people to share your heart with,
+ - Peace: Quiet surroundings or internal peace,
+ - Performing Arts: Music, theatre, etc.,
+ - Quiet Hobbies: Occupied moments of calm,
+ - Religion: The routine, structure, and community, as opposed to Faith,
+ - Reputation: The things strangers might know you for,
+ - Responsibility: Being entrusted by others,
+ - Sports: Playing or watching,
+ - Stability: Confidence that next week will be like this week,
+ - Treats: Indulging yourself,
+ - Visual Arts and Crafts: Creating or admiring,
  - Work: Fulfilling employment
- - Peace: Peace within yourself
- - Pleasure: Treating yourself well
- - Popularity: Being liked, but not perhaps known, by a large group
- - Religion: The routine and structure, as opposed to Faith
- - Reputation: The things strangers know you for
- - Responsibility: Being trusted by others
- - Stability: Confidence that next week will be like this week
- - Sports: Attending or playing
- - Keeping Fit: Exercise for the sake of health
- - Quiet Hobbies: Occupied moments of calm
 
 These values, and their definitions, have been determined through limited research and self-reflection,
 rather than scientific research.
+They are geared towards questions of disability and infirmity,
+to help those with limited resources determine how to prioritise.
 
 ## Making changes
 
