@@ -8,28 +8,28 @@ assuming a poset structure on values.
 
 These values are:
 
- - Adventure: Finding new excitements,
- - Appearance: Beauty, presence, and fashion,
- - Challenge: Pushing yourself, regardless of the goal,
- - Community: Being part of a wider group,
- - Curiosity: Finding new ideas,
- - Dancing: For fun or exercise,
- - Faith: Connection to something beyond humanity,
- - Friendships: Deep relationships with a select few,
- - Games: Boardgames, cards, computer games, etc.,
- - Independence: Living without routine assistance,
- - Learning: Amassing knowledge and skills,
- - Love: Finding people to share your heart with,
- - Peace: Quiet surroundings or internal peace,
- - Performing Arts: Music, theatre, etc.,
- - Quiet Hobbies: Occupied moments of calm,
- - Religion: The routine, structure, and community, as opposed to Faith,
- - Reputation: The things strangers might know you for,
- - Responsibility: Being entrusted by others,
- - Sports: Playing or watching,
- - Stability: Confidence that next week will be like this week,
- - Treats: Indulging yourself,
- - Visual Arts and Crafts: Creating or admiring,
+ - Adventure: Finding new excitements
+ - Appearance: Beauty, presence, and fashion
+ - Challenge: Pushing yourself, regardless of the goal
+ - Community: Being part of a wider group
+ - Curiosity: Finding new ideas
+ - Dancing: For fun or exercise
+ - Faith: Connection to something beyond humanity
+ - Friendships: Deep relationships with a select few
+ - Games: Boardgames, cards, computer games, etc.
+ - Independence: Living without routine assistance
+ - Learning: Amassing knowledge and skills
+ - Love: Finding people to share your heart with
+ - Peace: Quiet surroundings or internal peace
+ - Performing Arts: Music, theatre, etc.
+ - Quiet Hobbies: Occupied moments of calm
+ - Religion: The routine, structure, and community, as opposed to Faith
+ - Reputation: The things strangers might know you for
+ - Responsibility: Being entrusted by others
+ - Sports: Playing or watching
+ - Stability: Confidence that next week will be like this week
+ - Treats: Indulging yourself
+ - Visual Arts and Crafts: Creating or admiring
  - Work: Fulfilling employment
 
 These values, and their definitions, have been determined through limited research and self-reflection,
