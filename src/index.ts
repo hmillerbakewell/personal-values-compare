@@ -286,7 +286,7 @@ function draw_choice(v1: string, v2: string) {
         d.classList.add("definition")
         return d
     }
-    let label = document.createElement("div")
+    let label = document.createElement("h1")
     label.classList.add("header")
     label.classList.add("two-wide")
     label.innerHTML = "Which is more important to you?"
