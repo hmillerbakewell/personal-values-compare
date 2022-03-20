@@ -33,7 +33,7 @@ These values are:
  - Popularity: Being liked, but not perhaps known, by a large group
  - Religion: The routine and structure, as opposed to Faith
  - Reputation: The things strangers know you for
- - Responsibility: Being entrusted by others
+ - Responsibility: Being trusted by others
  - Stability: Confidence that next week will be like this week
  - Sports: Attending or playing
  - Keeping Fit: Exercise for the sake of health
