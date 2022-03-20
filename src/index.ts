@@ -32,8 +32,54 @@ class ComparisonPoset {
 
         return new ComparisonPoset(this.humanValues, o)
     }
+
+    supremum(value: string): string {
+        let above = this.all_above(value)
+        if (above.length > 0) {
+            return this.supremum(above[0])
+        }
+        return value
+    }
+
     print_valid(): string[] {
         return print_assignation(assign_ordering(this))
+    }
+
+    num_components(): number {
+        return this.suprema().length
+    }
+
+    suprema(): string[] {
+        return [... new Set(this.humanValues.map(v => this.supremum(v)))]
+    }
+
+    estimate_questions_remaining(determine_top_n: number): number {
+        // How many questions to connect all components, then fully determine top n
+        let questions_to_link_components = this.num_components() - 1
+
+        // Now work out how many questions once we have linked all components
+
+        // Most likely scenario is binary tree
+        let determined = this.fully_determined()
+        let remaining = Math.max(determine_top_n - determined, 1)
+        let questions_to_fill_top_spots_typical = remaining * (remaining - 1) / 2
+
+        let estimate = questions_to_link_components + 1 * questions_to_fill_top_spots_typical
+        return Math.floor(estimate) + 3 // plus 3 to be on the safe side
+    }
+
+    is_determined(value: string): boolean {
+        // Fully determined values have comparisons known everywhere, except against themselves
+        return this.humanValues.filter(v2 => this.comparison(value, v2) == Comparison.Unknown).length == 1
+    }
+
+    fully_determined(): number {
+        // Number with no unknown entries (beside themselves)
+        return this.humanValues.filter(v => this.is_determined(v)).length
+    }
+
+    maximal_top_n(n: number): string[] {
+        return this.humanValues.filter(v => this.all_above(v).length < n)
     }
 
     _max_rating(value: string): number {
@@ -170,6 +216,14 @@ class ValuesGame {
         this.poset_history.push(new ComparisonPoset(Values))
     }
     of_interest(): [boolean, string[]] {
+        let poset = this.poset()
+        let suprema = poset.suprema()
+        if (suprema.length > 1) {
+            let first_choice = rFrom(suprema.map(v => [v, 1]))
+            let second_choice = rFrom(suprema.filter(v => v != first_choice).map(v => [v, 1]))
+            return [true, [first_choice, second_choice]]
+        }
+
         let rating_info = this.poset().ratings(this.max_interest)
         let valid_competition = rating_info.filter(ri => ri.unknown_comparisons.length > 0)
         if (valid_competition.length == 0) {
@@ -190,8 +244,10 @@ class ValuesGame {
         let pair = this.of_interest()
         if (pair[0] != false) {
             draw_choice(pair[1][0], pair[1][1])
+            draw_estimate(this.poset().estimate_questions_remaining(this.max_interest))
         } else {
             draw_assignment(this.poset().print_valid().reverse().slice(0, this.max_interest))
+            hide_estimate()
         }
         draw_history(this.comparison_history)
     }
@@ -202,6 +258,9 @@ class ValuesGame {
             hide_assignment()
         }
         this.suggest()
+    }
+    remaining(): number {
+        return this.poset().estimate_questions_remaining(this.max_interest)
     }
 }
 
@@ -245,6 +304,25 @@ function clear_choice_div() {
     let div = document.getElementById("comparisons")
     div!.innerHTML = ""
 }
+
+
+function hide_estimate() {
+    let div = document.getElementById("estimate")
+    div!.classList.add("invisible")
+    div!.innerHTML = ""
+}
+
+function draw_estimate(estimate: number) {
+    let div = document.getElementById("estimate")
+    div!.classList.remove("invisible")
+    let estimate_text = estimate.toString()
+    if (estimate < 10) {
+        estimate_text = "Under 10"
+    }
+    div!.innerHTML = `Estimated questions remaining: ${estimate_text}`
+}
+
+
 
 function hide_assignment() {
     let div = document.getElementById("assignment")
