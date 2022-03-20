@@ -145,7 +145,6 @@ let Definitions = {
     "Work": "Fulfilling employment",
     "Peace": "Peace within yourself",
     "Pleasure": "Treating yourself well",
-    "Poise": "Physical presence",
     "Popularity": "Being liked, but not perhaps known, by a large group",
     "Religion": "The routine and structure, as opposed to Faith",
     "Reputation": "The things strangers know you for",
