@@ -23,9 +23,17 @@
     opacity: 0;
 }
 
-.central-column {
-    max-width: 30em;
-    margin: auto;
+@media only screen and (max-width: 1000px) {
+    .central-column {
+        width: 100%;
+        padding: 1em;
+    }
+}
+@media not (max-width: 1000px) {
+    .central-column {
+        max-width: 50em;
+        margin: auto;
+    }
 }
 
 body {
