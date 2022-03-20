@@ -235,7 +235,7 @@ function draw_choice(v1: string, v2: string) {
     let label = document.createElement("div")
     label.classList.add("header")
     label.classList.add("two-wide")
-    label.innerHTML = "Choose one"
+    label.innerHTML = "Which is more important to you?"
     clear_choice_div()
     div!.appendChild(label)
     div!.appendChild(button(v1, v2))
