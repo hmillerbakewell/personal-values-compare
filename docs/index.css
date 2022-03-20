@@ -15,7 +15,7 @@
     transition: opacity 0.5s ease-in-out;
 }
 
-.invisible{
+.invisible {
     opacity: 0;
 }
 
@@ -37,4 +37,9 @@
 
 .definition {
     text-align: center;
-  }
+}
+
+.github {
+    font-size: small;
+    color: gray;
+}
