@@ -12,6 +12,11 @@
     margin: auto;
     display: grid;
     grid-template-columns: 1fr;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.invisible{
+    opacity: 0;
 }
 
 #intro {
