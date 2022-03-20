@@ -64,7 +64,7 @@ class ComparisonPoset {
         let remaining = Math.max(determine_top_n - determined, 1)
         let questions_to_fill_top_spots_typical = remaining * (remaining - 1) / 2
 
-        let estimate = questions_to_link_components + 1 * questions_to_fill_top_spots_typical
+        let estimate = questions_to_link_components + 1.5 * questions_to_fill_top_spots_typical
         return Math.floor(estimate) + 3 // plus 3 to be on the safe side
     }
 
