@@ -124,11 +124,12 @@ let Definitions = {
     "Adventure": "Finding new excitements",
     "Appearance": "Beauty, presence, and fashion",
     "Challenge": "Pushing yourself, regardless of the goal",
-    "Community": "Being part of a wider group",
-    "Curiosity": "Finding new ideas",
-    "Dancing": "For fun or exercise",
+    "Community": "Being part of a large group",
+    "Curiosity": "Encountering new ideas",
+    "Dancing": "Alone or with others",
+    "Exercise": "Things you do to keep fit",
     "Faith": "Connection to something beyond humanity",
-    "Friendships": "Deep relationships with a select few",
+    "Friendship": "Deep relationships within a small group",
     "Games": "Boardgames, cards, computer games, etc.",
     "Independence": "Living without routine assistance",
     "Learning": "Amassing knowledge and skills",
@@ -138,12 +139,12 @@ let Definitions = {
     "Quiet Hobbies": "Occupied moments of calm",
     "Religion": "The routine, structure, and community, as opposed to Faith",
     "Reputation": "The things strangers might know you for",
-    "Responsibility": "Being entrusted by others",
-    "Sports": "Playing or watching",
+    "Responsibility": "Being trusted by others",
     "Stability": "Confidence that next week will be like this week",
+    "Sport": "Watching or taking part in",
     "Treats": "Indulging yourself",
     "Visual Arts and Crafts": "Creating or admiring",
-    "Work": "Fulfilling employment"
+    "Work": "Fulfilling employment",
 }
 
 let Values: string[] = []
