@@ -17,6 +17,7 @@ These values are:
  - Emotional Independence: Your mood is not reliant on the actions of others
  - Exercise: Things you do to keep fit
  - Faith: Connection to something beyond humanity
+ - Fresh Air: Access to a clean environment
  - Friendship: Deep relationships within a small group
  - Games: Boardgames, cards, computer games, etc.
  - Independence: Living without routine assistance
@@ -24,6 +25,7 @@ These values are:
  - Love: Finding people to share your heart with
  - Peace: Quiet surroundings or internal peace
  - Performing Arts: Music, theatre, etc.
+ - Pets: Having pets at home
  - Physical Independence: Living without routine assistance
  - Quiet Hobbies: Occupied moments of calm
  - Religion: The routine, structure, and community, as opposed to Faith
