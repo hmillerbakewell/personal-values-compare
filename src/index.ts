@@ -293,8 +293,13 @@ function draw_choice(v1: string, v2: string) {
     label.classList.add("header")
     label.classList.add("two-wide")
     label.innerHTML = "Which is more important to you?"
+    let explanation = document.createElement("div")
+    explanation.classList.add("header")
+    explanation.classList.add("two-wide")
+    explanation.innerHTML = "Thinking about what you want from your day-to-day life"
     clear_choice_div()
     div!.appendChild(label)
+    div!.appendChild(explanation)
     div!.appendChild(button(v1, v2))
     div!.appendChild(button(v2, v1))
     div!.appendChild(mini_label(v1))
