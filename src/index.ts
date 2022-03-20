@@ -1,11 +1,14 @@
 class ComparisonPoset {
     orderings: Map<string, Comparison> = new Map()
-    constructor(readonly humanValues: string[]) {
-        this.humanValues.map(v1 => {
-            this.humanValues.map(v2 => {
-                this.orderings.set(combine_values(v1, v2), Comparison.Unknown)
+    constructor(readonly humanValues: string[], orderings: Map<string, Comparison> = new Map()) {
+        this.orderings = copy_map(orderings)
+        if ([...orderings.values()].length == 0) {
+            this.humanValues.map(v1 => {
+                this.humanValues.map(v2 => {
+                    this.orderings.set(combine_values(v1, v2), Comparison.Unknown)
+                })
             })
-        })
+        }
     }
     comparison(v1: string, v2: string): Comparison {
         return this.orderings.get(combine_values(v1, v2)) as Comparison
@@ -19,23 +22,15 @@ class ComparisonPoset {
     add_greater_than(higher: string, lower: string): ComparisonPoset {
         let higher_and_above = [higher].concat(this.all_above(higher))
         let lower_and_below = [lower].concat(this.all_below(lower))
+        let o = copy_map(this.orderings)
         higher_and_above.map(v1 => {
             lower_and_below.map(v2 => {
-                this._set(v1, v2, Comparison.GreaterThan)
+                o.set(combine_values(v1, v2), Comparison.GreaterThan)
+                o.set(combine_values(v2, v1), Comparison.LessThanOrEqual)
             })
         })
-        return this
-    }
-    _set(v1: string, v2: string, comparison: Comparison) {
-        if (v1 == v2) {
-            throw new Error("Values must be different")
-        }
-        let current = this.comparison(v1, v2)
-        if (current != Comparison.Unknown && current != comparison) {
-            throw new Error("Comparison disagreement")
-        }
-        this.orderings.set(combine_values(v1, v2), comparison)
-        this.orderings.set(combine_values(v2, v1), flip_comparison(comparison))
+
+        return new ComparisonPoset(this.humanValues, o)
     }
     print_valid(): string[] {
         return print_assignation(assign_ordering(this))
@@ -57,6 +52,14 @@ class ComparisonPoset {
             qualifying.filter(w => this.comparison(v, w) == Comparison.Unknown && (v != w))
         ))
     }
+}
+
+function copy_map<K, V>(ordering: Map<K, V>): Map<K, V> {
+    let o: Map<K, V> = new Map();
+    [...ordering.keys()].map(k => {
+        o.set(k, ordering.get(k) as V)
+    })
+    return o
 }
 
 class RatingInformation {
@@ -153,23 +156,29 @@ for (let key in Definitions) {
 }
 
 class ValuesGame {
-    poset: ComparisonPoset
+    poset_history: ComparisonPoset[] = []
+    comparison_history: [string, string][] = []
+    poset() {
+        // Top one is always most recent
+        return this.poset_history[0]
+    }
     constructor(readonly max_interest: number) {
-        this.poset = new ComparisonPoset(Values)
+        this.poset_history.push(new ComparisonPoset(Values))
     }
     of_interest(): [boolean, string[]] {
-        let rating_info = this.poset.ratings(this.max_interest)
+        let rating_info = this.poset().ratings(this.max_interest)
         let valid_competition = rating_info.filter(ri => ri.unknown_comparisons.length > 0)
         if (valid_competition.length == 0) {
             return [false, []]
         }
 
         let first_choice = rFrom(valid_competition.map(v => [v, 1 / (1 + v.rating)]))
-        let second_choice = rFrom(first_choice.unknown_comparisons.map(v => [v, 1 / (1 + this.poset._max_rating(v))]))
+        let second_choice = rFrom(first_choice.unknown_comparisons.map(v => [v, 1 / (1 + this.poset()._max_rating(v))]))
         return [true, [first_choice.value, second_choice]]
     }
     choose(v1: string, v2: string): void {
-        this.poset.add_greater_than(v1, v2)
+        this.poset_history.unshift(this.poset().add_greater_than(v1, v2))
+        this.comparison_history.unshift([v1, v2])
         this.suggest()
     }
     suggest(): void {
@@ -178,13 +187,64 @@ class ValuesGame {
         if (pair[0] != false) {
             draw_choice(pair[1][0], pair[1][1])
         } else {
-            draw_assignment(this.poset.print_valid().reverse().slice(0, this.max_interest))
+            draw_assignment(this.poset().print_valid().reverse().slice(0, this.max_interest))
         }
+        draw_history(this.comparison_history)
+    }
+    undo(): void {
+        if (this.poset_history.length > 1) {
+            this.poset_history.shift()
+            this.comparison_history.shift()
+            hide_assignment()
+        }
+        this.suggest()
+    }
+}
+
+function clear_history() {
+    let div = document.getElementById("history")
+    div!.innerHTML = ""
+}
+
+function draw_history(comparisons: [string, string][]) {
+    clear_history()
+
+    let div = document.getElementById("history")
+    if (comparisons.length > 0) {
+
+        let label = document.createElement("div")
+        let undoButton = document.createElement("button")
+        undoButton.addEventListener("click", ev => {
+            VG.undo()
+        })
+        undoButton.innerText = "Undo Last"
+        label.appendChild(undoButton)
+        label.classList.add("three-wide")
+        div!.appendChild(label)
+        comparisons.forEach(c => {
+            let cp1 = document.createElement("div")
+            let cp2 = document.createElement("div")
+            let cp3 = document.createElement("div")
+
+            cp1.innerText = c[0]
+            cp2.textContent = ">"
+            cp3.innerText = c[1]
+
+            div!.appendChild(cp1)
+            div!.appendChild(cp2)
+            div!.appendChild(cp3)
+        })
     }
 }
 
 function clear_choice_div() {
     let div = document.getElementById("comparisons")
+    div!.innerHTML = ""
+}
+
+function hide_assignment() {
+    let div = document.getElementById("assignment")
+    div!.classList.add("invisible")
     div!.innerHTML = ""
 }
 
