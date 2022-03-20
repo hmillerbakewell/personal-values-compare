@@ -236,7 +236,7 @@ function draw_choice(v1: string, v2: string) {
     div!.appendChild(mini_label(v2))
 }
 
-let VG = new ValuesGame(2)
+let VG = new ValuesGame(5)
 function start() {
     VG.suggest()
 }
