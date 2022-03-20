@@ -12,6 +12,7 @@ These values are:
  - Appearance: Beauty, presence, and fashion
  - Challenge: Pushing yourself, regardless of the goal
  - Community: Being part of a large group
+ - Cooking: Preparing food in your own home
  - Curiosity: Encountering new ideas
  - Dancing: Alone or with others
  - Emotional Independence: Your mood is not reliant on the actions of others
@@ -20,6 +21,8 @@ These values are:
  - Fresh Air: Access to a clean environment
  - Friendship: Deep relationships within a small group
  - Games: Boardgames, cards, computer games, etc.
+ - Giving Gifts: Finding or making gifts for others
+ - Helping Others: Charity work or acts of service
  - Independence: Living without routine assistance
  - Learning: Amassing knowledge and skills
  - Love: Finding people to share your heart with
