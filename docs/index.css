@@ -36,6 +36,10 @@
     }
 }
 
+.central-column{
+    text-align: center;
+}
+
 body {
     overflow-y: scroll;
 }
@@ -44,9 +48,6 @@ body {
     margin: 1em;
 }
 
-.header {
-    text-align: center;
-}
 
 .two-wide {
     grid-column-start: 1;
