@@ -4,6 +4,8 @@ This website makes it easy to determine, in order, one's top five values from a 
 It does this via rounds of binary comparison,
 assuming a poset structure on values.
 
+## The values
+
 These values are:
 
  - Adventure: Finding new excitements
@@ -41,3 +43,14 @@ These values are:
 
 These values, and their definitions, have been determined through limited research and self-reflection,
 rather than scientific research.
+
+## Making changes
+
+All of this code, including the list of values and definitions,
+is released under the MIT license (see side-bar, or the LICENSE file).
+
+This website is written using TypeScript, which is then compiled to JavaScript.
+The list of values and definitions are stored as `Definitions`,
+and the logic for determining which question to ask next is in `ValuesGame`.
+
+
