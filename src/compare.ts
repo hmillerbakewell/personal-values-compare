@@ -214,7 +214,7 @@ let AllValues: PersonalValue[] = [
     new PersonalValue("Leadership", "People look to you for guidance", [Categories.Career]),
     new PersonalValue("Learning", "Amassing knowledge and skills", [Categories.Hobbies]),
     new PersonalValue("Love", "Finding people to share your heart with", [Categories.Relationships]),
-    new PersonalValue("Peace", "Quiet surroundings", [Categories.Environment]),
+    new PersonalValue("Peace", "Quiet when you need it", [Categories.Environment]),
     new PersonalValue("Pets", "Having pets at home", [Categories.Environment]),
     new PersonalValue("Performing Arts", "Music, theatre, etc.", [Categories.Hobbies]),
     new PersonalValue("Politics", "Serving the public", [Categories.Career]),
