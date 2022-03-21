@@ -6,39 +6,65 @@ assuming a poset structure on values.
 
 ## The values
 
-These values are:
+These values are broken down by category to make the process quicker.
+Some values appear in multiple categories:
 
- - Adventure: Finding new excitements
- - Appearance: Beauty, presence, and fashion
- - Challenge: Pushing yourself, regardless of the goal
- - Community: Being part of a large group
- - Cooking: Preparing food in your own home
- - Curiosity: Encountering new ideas
- - Dancing: Alone or with others
- - Emotional Independence: Your mood is not reliant on the actions of others
- - Exercise: Things you do to keep fit
- - Faith: Connection to something beyond humanity
- - Fresh Air: Access to a clean environment
- - Friendship: Deep relationships within a small group
- - Games: Boardgames, cards, computer games, etc.
- - Giving Gifts: Finding or making gifts for others
- - Helping Others: Charity work or acts of service
- - Independence: Living without routine assistance
- - Learning: Amassing knowledge and skills
- - Love: Finding people to share your heart with
- - Peace: Quiet surroundings or internal peace
- - Performing Arts: Music, theatre, etc.
- - Pets: Having pets at home
- - Physical Independence: Living without routine assistance
- - Quiet Hobbies: Occupied moments of calm
- - Religion: The routine, structure, and community, as opposed to Faith
+Career:
+
+ - Compassion: Recognising the needs of others
+ - Helping Others: Directly helping those around you
+ - Leadership: People look to you for guidance
+ - Politics: Serving the public
  - Reputation: The things strangers might know you for
  - Responsibility: Being trusted by others
- - Stability: Confidence that next week will be like this week
+ - Status: The higher up the ladder the better
+ - Wealth: Beyond financial stability
+
+Home Environment:
+
+ - Bustle: Always having something going on
+ - Cooking: Preparing food in your own home
+ - Fresh Air: Access to a clean environment
+ - Peace: Quiet surroundings
+ - Pets: Having pets at home
+ - Physical Independence: Living without routine assistance
+
+Exercise and Body:
+
+ - Appearance: How you look
+ - Dancing: Alone or with others
+ - Exercise: Things you do to keep fit, but not Sport
  - Sport: Watching or taking part in
- - Treats: Indulging yourself
+
+Hobbies:
+
+ - Games: Boardgames, cards, computer games, etc.
+ - Giving Gifts: Finding or making gifts for others
+ - Learning: Amassing knowledge and skills
+ - Performing Arts: Music, theatre, etc.
+ - Quality Time: Being with friends and loved ones, no matter the activity
+ - Quiet Hobbies: Occupied moments of calm
  - Visual Arts and Crafts: Creating or admiring
- - Work: Fulfilling employment
+ - Working Out: Keeping fit, but not Sport
+
+Long Term Attitudes:
+
+ - Adventure: Finding new excitements
+ - Challenge: Pushing yourself, regardless of the goal
+ - Curiosity: Encountering new ideas
+ - Growth: Knowing you are changing and adapting
+ - Stability: Confidence that next week will be like this week
+
+Relationships and Faith:
+
+ - Community: Being part of a large group
+ - Emotional Independence: Your mood is not reliant on the actions of others
+ - Faith: Connection to something beyond humanity
+ - Family: Regular connection with family
+ - Friendship: Deep relationships within a small group
+ - Love: Finding people to share your heart with
+ - Religion: The routine, structure, and community, as opposed to Faith
+
 
 These values, and their definitions, have been determined through limited research and self-reflection,
 rather than scientific research.
@@ -54,4 +80,9 @@ This website is written using TypeScript, which is then compiled to JavaScript.
 The list of values and definitions are stored as `Definitions`,
 and the logic for determining which question to ask next is in `ValuesGame`.
 
+## Versioning
 
+Notable changes are given a new version number,
+but this is mostly hidden from the user.
+Specific versions can be linked by replacing the "/latest/" part of the URL
+with the version number.

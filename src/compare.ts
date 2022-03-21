@@ -175,43 +175,106 @@ function flip_comparison(comparison: Comparison): Comparison {
 }
 
 
-let Definitions = {
-    "Adventure": "Finding new excitements",
-    "Appearance": "Beauty, presence, and fashion",
-    "Challenge": "Pushing yourself, regardless of the goal",
-    "Community": "Being part of a large group",
-    "Curiosity": "Encountering new ideas",
-    "Cooking": "Preparing food in your own home",
-    "Dancing": "Alone or with others",
-    "Emotional Independence": "Your mood is not reliant on the actions of others",
-    "Exercise": "Things you do to keep fit",
-    "Faith": "Connection to something beyond humanity",
-    "Family": "Regular connection with family",
-    "Fresh Air": "Access to a clean environment",
-    "Friendship": "Deep relationships within a small group",
-    "Games": "Boardgames, cards, computer games, etc.",
-    "Giving Gifts": "Finding or making gifts for others",
-    "Helping Others": "Charity work or acts of service",
-    "Learning": "Amassing knowledge and skills",
-    "Love": "Finding people to share your heart with",
-    "Peace": "Quiet surroundings or internal peace",
-    "Pets": "Having pets at home",
-    "Performing Arts": "Music, theatre, etc.",
-    "Physical Independence": "Living without routine assistance",
-    "Quiet Hobbies": "Occupied moments of calm",
-    "Religion": "The routine, structure, and community, as opposed to Faith",
-    "Reputation": "The things strangers might know you for",
-    "Responsibility": "Being trusted by others",
-    "Stability": "Confidence that next week will be like this week",
-    "Sport": "Watching or taking part in",
-    "Treats": "Indulging yourself",
-    "Visual Arts and Crafts": "Creating or admiring",
-    "Work": "Fulfilling employment",
+
+enum Categories {
+    Relationships = "Relationships",
+    Exercise = "Exercise",
+    Environment = "Environment",
+    Hobbies = "Hobbies",
+    Career = "Career",
+    LongTerm = "LongTerm"
 }
 
-let Values: string[] = []
-for (let key in Definitions) {
-    Values.push(key)
+
+class PersonalValue {
+    constructor(readonly shortName: string, readonly description: string, readonly categories: Categories[]) { }
+}
+
+
+let AllValues: PersonalValue[] = [
+    new PersonalValue("Adventure", "Finding new excitements", [Categories.LongTerm]),
+    new PersonalValue("Appearance", "How you look", [Categories.Exercise]),
+    new PersonalValue("Bustle", "Always having something going on", [Categories.Environment]),
+    new PersonalValue("Challenge", "Pushing yourself, regardless of the goal", [Categories.LongTerm]),
+    new PersonalValue("Community", "Being part of a large group", [Categories.Relationships]),
+    new PersonalValue("Compassion", "Recognising the needs of others", [Categories.Career]),
+    new PersonalValue("Curiosity", "Encountering new ideas", [Categories.LongTerm]),
+    new PersonalValue("Cooking", "Preparing food in your own home", [Categories.Environment]),
+    new PersonalValue("Dancing", "Alone or with others", [Categories.Exercise]),
+    new PersonalValue("Emotional Independence", "Your mood is not reliant on the actions of others", [Categories.Relationships]),
+    new PersonalValue("Exercise", "Things you do to keep fit, but not Sport", [Categories.Exercise]),
+    new PersonalValue("Faith", "Connection to something beyond humanity", [Categories.Relationships]),
+    new PersonalValue("Family", "Regular connection with family", [Categories.Relationships]),
+    new PersonalValue("Fresh Air", "Access to a clean environment", [Categories.Environment]),
+    new PersonalValue("Friendship", "Deep relationships within a small group", [Categories.Relationships]),
+    new PersonalValue("Games", "Boardgames, cards, computer games, etc.", [Categories.Hobbies]),
+    new PersonalValue("Giving Gifts", "Finding or making gifts for others", [Categories.Hobbies]),
+    new PersonalValue("Growth", "Knowing you are changing and adapting", [Categories.LongTerm]),
+    new PersonalValue("Helping Others", "Directly helping those around you", [Categories.Career]),
+    new PersonalValue("Leadership", "People look to you for guidance", [Categories.Career]),
+    new PersonalValue("Learning", "Amassing knowledge and skills", [Categories.Hobbies]),
+    new PersonalValue("Love", "Finding people to share your heart with", [Categories.Relationships]),
+    new PersonalValue("Peace", "Quiet surroundings", [Categories.Environment]),
+    new PersonalValue("Pets", "Having pets at home", [Categories.Environment]),
+    new PersonalValue("Performing Arts", "Music, theatre, etc.", [Categories.Hobbies]),
+    new PersonalValue("Politics", "Serving the public", [Categories.Career]),
+    new PersonalValue("Physical Independence", "Living without routine assistance", [Categories.Environment]),
+    new PersonalValue("Quality Time", "Being with friends and loved ones, no matter the activity", [Categories.Hobbies]),
+    new PersonalValue("Quiet Hobbies", "Occupied moments of calm", [Categories.Hobbies]),
+    new PersonalValue("Religion", "The routine, structure, and community, as opposed to Faith", [Categories.Relationships]),
+    new PersonalValue("Reputation", "The things strangers might know you for", [Categories.Career]),
+    new PersonalValue("Responsibility", "Being trusted by others", [Categories.Career]),
+    new PersonalValue("Stability", "Confidence that next week will be like this week", [Categories.LongTerm]),
+    new PersonalValue("Status", "The higher up the ladder the better", [Categories.Career]),
+    new PersonalValue("Sport", "Watching or taking part in", [Categories.Exercise]),
+    new PersonalValue("Visual Arts and Crafts", "Creating or admiring", [Categories.Hobbies]),
+    new PersonalValue("Wealth", "Beyond financial stability", [Categories.Career]),
+    new PersonalValue("Working Out", "Keeping fit, but not Sport", [Categories.Hobbies]),
+]
+
+function values_by_category(categories: Categories[]): string[] {
+    let set_of_categories = new Set(categories)
+    let should_include = (pv: PersonalValue) => pv.categories.filter(i => set_of_categories.has(i)).length > 0
+
+    return AllValues.filter(should_include).map(pv => pv.shortName)
+}
+
+let Definitions: any = {}
+AllValues.forEach(pv => { Definitions[pv.shortName] = pv.description })
+
+function markdown_all_values(): string {
+    let by_category = new Map<Categories, PersonalValue[]>()
+    AllValues.forEach(pv => {
+        pv.categories.forEach(c => by_category.set(c, []))
+    })
+    AllValues.forEach(pv => {
+        pv.categories.forEach(c => (by_category.get(c) as PersonalValue[]).push(pv))
+    })
+    let s = ""
+    for (let cat of [...by_category.keys()].sort()) {
+        let pvs = by_category.get(cat) as PersonalValue[]
+        s += category_long_name(cat) + ":\n\n"
+        pvs.map(pv => pv.shortName).sort().forEach(short => s += " - " + short + ": " + Definitions[short] + "\n")
+        s += "\n"
+    }
+    return s
+}
+
+function category_long_name(category: Categories): string {
+    switch (category) {
+        case Categories.Career:
+            return "Career"
+        case Categories.Hobbies:
+            return "Hobbies"
+        case Categories.Environment:
+            return "Home Environment"
+        case Categories.LongTerm:
+            return "Long Term Attitudes"
+        case Categories.Exercise:
+            return "Exercise and Body"
+        case Categories.Relationships:
+            return "Relationships and Faith"
+    }
 }
 
 class ValuesGame {
@@ -221,8 +284,8 @@ class ValuesGame {
         // Top one is always most recent
         return this.poset_history[0]
     }
-    constructor(readonly max_interest: number) {
-        this.poset_history.push(new ComparisonPoset(Values))
+    constructor(readonly max_interest: number, readonly categories: Categories[]) {
+        this.poset_history.push(new ComparisonPoset(values_by_category(categories)))
     }
     of_interest(): [boolean, string[]] {
         let poset = this.poset()
@@ -386,7 +449,40 @@ function draw_choice(v1: string, v2: string) {
     div!.appendChild(mini_label(v2))
 }
 
-let VG = new ValuesGame(5)
+let VG: ValuesGame
 function start() {
+    let max_and_categories = read_GET()
+    let categories = max_and_categories[1]
+    let max_to_determine = max_and_categories[0]
+    VG = new ValuesGame(max_to_determine, categories)
     VG.suggest()
+}
+
+let read_GET = function (): [number, Categories[]] {
+    let break_at_question_mark = window.location.toString().split(/\?/)
+    let all_categories = Object.keys(Categories).filter(k => Number.isNaN(+k)) as Categories[];
+    if (break_at_question_mark.length == 1) {
+        return [5, all_categories]
+    }
+    let instructions = break_at_question_mark[1]
+    let max_to_find = 5
+    let categories_to_include = all_categories
+    instructions.split("&").map(s => {
+        let parts = s.split("=")
+        if (parts[0] == "include") {
+            categories_to_include = []
+            let cats = parts[1].split(",")
+            cats.forEach(requested_cat => {
+                all_categories.forEach(real_cat => {
+                    if (real_cat == requested_cat) {
+                        categories_to_include.push(real_cat)
+                    }
+                })
+            })
+        }
+        if (parts[0] == "max") {
+            max_to_find = parseInt(parts[1])
+        }
+    })
+    return [max_to_find, categories_to_include]
 }
