@@ -20,7 +20,7 @@
         }
         function begin(e) {
             let cat_string = compile_categories()
-            console.log(cat_string)
+            e.preventDefault()
             window.location.href = 'compare.html?' + cat_string
         }
         function clear_boxes() {
