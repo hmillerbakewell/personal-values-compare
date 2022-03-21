@@ -54,14 +54,20 @@ class ComparisonPoset {
     }
 
     estimate_questions_remaining(determine_top_n: number): number {
+        // strategy: accurate measure for the top level
+        // then a heuristic for the rest
+
+        let completed = this.fully_determined()
+
+        let next_level = this.maximal_top_n(completed + 1).length - completed
+
         // How many questions to connect all components, then fully determine top n
-        let questions_to_link_components = this.num_components() - 1
+        let questions_to_link_components = next_level - 1
 
         // Now work out how many questions once we have linked all components
 
         // Most likely scenario is binary tree
-        let determined = this.fully_determined()
-        let remaining = Math.max(determine_top_n - determined, 1)
+        let remaining = Math.max(determine_top_n - completed, 1)
         let questions_to_fill_top_spots_typical = remaining * (remaining - 1) / 2
 
         let estimate = questions_to_link_components + 1.5 * questions_to_fill_top_spots_typical
@@ -220,22 +226,20 @@ class ValuesGame {
     }
     of_interest(): [boolean, string[]] {
         let poset = this.poset()
-        let suprema = poset.suprema()
-        if (suprema.length > 1) {
-            let first_choice = rFrom(suprema.map(v => [v, 1]))
-            let second_choice = rFrom(suprema.filter(v => v != first_choice).map(v => [v, 1]))
-            return [true, [first_choice, second_choice]]
-        }
+        let sorted = poset.fully_determined()
 
-        let rating_info = this.poset().ratings(this.max_interest)
-        let valid_competition = rating_info.filter(ri => ri.unknown_comparisons.length > 0)
-        if (valid_competition.length == 0) {
-            return [false, []]
-        }
+        if (sorted < this.max_interest) {
+            let next_level = poset.maximal_top_n(sorted + 1).filter(v => !poset.is_determined(v))
 
-        let first_choice = rFrom(valid_competition.map(v => [v, 1 / (1 + v.rating)]))
-        let second_choice = rFrom(first_choice.unknown_comparisons.map(v => [v, 1 / (1 + this.poset()._max_rating(v))]))
-        return [true, [first_choice.value, second_choice]]
+
+
+            if (next_level.length > 1) {
+                let first_choice = rFrom(next_level.map(v => [v, 1]))
+                let second_choice = rFrom(next_level.filter(v => v != first_choice).map(v => [v, 1]))
+                return [true, [first_choice, second_choice]]
+            }
+        }
+        return [false, []]
     }
     choose(v1: string, v2: string): void {
         this.poset_history.unshift(this.poset().add_greater_than(v1, v2))
@@ -373,14 +377,9 @@ function draw_choice(v1: string, v2: string) {
     let label = document.createElement("h1")
     label.classList.add("header")
     label.classList.add("two-wide")
-    label.innerHTML = "Which is more important to you?"
-    let explanation = document.createElement("div")
-    explanation.classList.add("header")
-    explanation.classList.add("two-wide")
-    explanation.innerHTML = "Thinking about what you want from your day-to-day life"
+    label.innerHTML = "Which is more important in day-to-day life?"
     clear_choice_div()
     div!.appendChild(label)
-    div!.appendChild(explanation)
     div!.appendChild(button(v1, v2))
     div!.appendChild(button(v2, v1))
     div!.appendChild(mini_label(v1))
