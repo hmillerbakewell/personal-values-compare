@@ -30,20 +30,22 @@
         }
         function read_get() {
             let break_at_question_mark = window.location.toString().split(/\?/)
-            let instructions = break_at_question_mark[1]
-            instructions.split("&").map(s => {
-                let parts = s.split("=")
-                if (parts[0] == "include") {
-                    clear_boxes()
-                    let cats = parts[1].split(",")
-                    cats.forEach(requested_cat => {
-                        let ele_with_id = document.getElementById(requested_cat)
-                        if (ele_with_id != undefined) {
-                            ele_with_id.checked = true
-                        }
-                    })
-                }
-            })
+            if (break_at_question_mark.length > 1) {
+                let instructions = break_at_question_mark[1]
+                instructions.split("&").map(s => {
+                    let parts = s.split("=")
+                    if (parts[0] == "include") {
+                        clear_boxes()
+                        let cats = parts[1].split(",")
+                        cats.forEach(requested_cat => {
+                            let ele_with_id = document.getElementById(requested_cat)
+                            if (ele_with_id != undefined) {
+                                ele_with_id.checked = true
+                            }
+                        })
+                    }
+                })
+            }
         }
     </script>
 </head>
