@@ -210,6 +210,7 @@ let AllValues: PersonalValue[] = [
     new PersonalValue("Fresh Air", "Access to a clean environment", [Categories.Environment]),
     new PersonalValue("Friendship", "Deep relationships within a small group", [Categories.Relationships]),
     new PersonalValue("Games", "Boardgames, cards, computer games, etc.", [Categories.Hobbies]),
+    new PersonalValue("Gardening", "A place and the time to grow plants", [Categories.Hobbies, Categories.Environment]),
     new PersonalValue("Giving Gifts", "Finding or making gifts for others", [Categories.Hobbies, Categories.Relationships]),
     new PersonalValue("Growth", "Knowing you are changing and adapting", [Categories.LongTerm]),
     new PersonalValue("Helping Others", "Working to help those around you", [Categories.Career, Categories.Community]),
