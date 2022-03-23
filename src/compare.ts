@@ -349,6 +349,7 @@ function draw_history(comparisons: [string, string][]) {
         undoButton.addEventListener("click", ev => {
             VG.undo()
         })
+        undoButton.classList.add("undo-button")
         undoButton.innerText = "Undo Last"
         label.appendChild(undoButton)
         label.classList.add("three-wide")
@@ -427,6 +428,7 @@ function draw_choice(v1: string, v2: string) {
         b.addEventListener("click", ev => {
             VG.choose(v, w)
         })
+        b.classList.add("values")
         return b
     }
 
