@@ -182,7 +182,6 @@ enum Categories {
     Hobbies = "Hobbies",
     Career = "Career",
     LongTerm = "LongTerm",
-    Health = "Health",
     Community = "Community"
 }
 
@@ -193,18 +192,16 @@ class PersonalValue {
 
 
 let AllValues: PersonalValue[] = [
-    new PersonalValue("Acknowledgement", "Have your opinions heard", [Categories.Health, Categories.Career]),
+    new PersonalValue("Acknowledgement", "Have your opinions heard", [Categories.Career]),
     new PersonalValue("Adventure", "Finding new excitements", [Categories.LongTerm]),
-    new PersonalValue("Appearance", "How you look", [Categories.Health]),
+    new PersonalValue("Appearance", "How you look", [Categories.Hobbies]),
     new PersonalValue("Bustle", "Always having something going on", [Categories.Environment]),
     new PersonalValue("Challenge", "Pushing yourself, regardless of the goal", [Categories.LongTerm]),
     new PersonalValue("Community", "Being part of a large group", [Categories.Community]),
-    new PersonalValue("Compassion", "Recognising the needs of others", [Categories.Relationships]),
     new PersonalValue("Curiosity", "Encountering new ideas", [Categories.LongTerm]),
-    new PersonalValue("Cooking", "Preparing food in your own home", [Categories.Environment]),
-    new PersonalValue("Dancing", "Alone or with others", [Categories.Health, Categories.Hobbies]),
-    new PersonalValue("Emotional Independence", "Your mood is not reliant on the actions of others", [Categories.Relationships, Categories.Health]),
-    new PersonalValue("Exercise", "Things you do to keep fit, but not Sport", [Categories.Health]),
+    new PersonalValue("Cooking", "Preparing food in your own home", [Categories.Environment, Categories.Hobbies]),
+    new PersonalValue("Dancing", "Structured or doing your own thing", [Categories.Hobbies]),
+    new PersonalValue("Exercise", "Things you do to keep fit, but not competitive", [Categories.Hobbies]),
     new PersonalValue("Faith", "Connection to something beyond humanity", [Categories.Community]),
     new PersonalValue("Family", "Regular connection with family", [Categories.Relationships, Categories.Community]),
     new PersonalValue("Fresh Air", "Access to a clean environment", [Categories.Environment]),
@@ -212,30 +209,26 @@ let AllValues: PersonalValue[] = [
     new PersonalValue("Games", "Boardgames, cards, computer games, etc.", [Categories.Hobbies]),
     new PersonalValue("Gardening", "A place and the time to grow plants", [Categories.Hobbies, Categories.Environment]),
     new PersonalValue("Giving Gifts", "Finding or making gifts for others", [Categories.Hobbies, Categories.Relationships]),
-    new PersonalValue("Growth", "Knowing you are changing and adapting", [Categories.LongTerm]),
+    new PersonalValue("Growth", "Knowing you are changing and adapting", [Categories.LongTerm, Categories.Career]),
     new PersonalValue("Helping Others", "Working to help those around you", [Categories.Career, Categories.Community]),
     new PersonalValue("Leadership", "People look to you for guidance", [Categories.Career]),
     new PersonalValue("Learning", "Amassing knowledge and skills", [Categories.Hobbies]),
     new PersonalValue("Love", "Finding people to share your heart with", [Categories.Relationships]),
-    new PersonalValue("Pain Relief", "Pain specific to a body part", [Categories.Health]),
-    new PersonalValue("Peace", "Quiet when you need it", [Categories.Environment]),
+    new PersonalValue("Peace", "Calm, tranquillity, silence", [Categories.Environment]),
     new PersonalValue("Pets", "Having pets at home", [Categories.Environment, Categories.Relationships]),
     new PersonalValue("Performing Arts", "Music, theatre, etc.", [Categories.Hobbies]),
     new PersonalValue("Politics", "Serving the public", [Categories.Career]),
-    new PersonalValue("Physical Independence", "Living without routine assistance", [Categories.Environment, Categories.Health]),
-    new PersonalValue("Quality Time", "Being with friends and loved ones, no matter the activity", [Categories.Hobbies, Categories.Relationships]),
-    new PersonalValue("Quiet Hobbies", "Occupied moments of calm", [Categories.Hobbies]),
+    new PersonalValue("Physical Independence", "Living without routine assistance", [Categories.Environment]),
+    new PersonalValue("Quality Time", "Being with friends or loved ones, no matter the activity", [Categories.Hobbies]),
+    new PersonalValue("Literature", "Reading and writing", [Categories.Hobbies]),
     new PersonalValue("Religion", "The routine, structure, and community, as opposed to Faith", [Categories.Community]),
-    new PersonalValue("Rest", "Time to quietly recover", [Categories.Health]),
-    new PersonalValue("Reputation", "The things strangers might know you for", [Categories.Career, Categories.Community]),
+    new PersonalValue("Reputation", "The things strangers might know you for", [Categories.Career]),
     new PersonalValue("Responsibility", "Being trusted by others", [Categories.Career]),
-    new PersonalValue("Stability", "Confidence that next week will be like this week", [Categories.LongTerm, Categories.Health, Categories.Environment]),
+    new PersonalValue("Stability", "Confidence that next week will be like this week", [Categories.LongTerm, Categories.Environment]),
     new PersonalValue("Status", "The higher up the ladder the better", [Categories.Career, Categories.Community]),
-    new PersonalValue("Sport", "Watching or taking part in", [Categories.Health]),
-    new PersonalValue("Talking Therapy", "Regular meetings with a specialist", [Categories.Health]),
-    new PersonalValue("Visual Arts and Crafts", "Creating or admiring", [Categories.Hobbies]),
+    new PersonalValue("Sport", "Competitive exercise", [Categories.Hobbies]),
+    new PersonalValue("Visual Arts and Crafts", "Creating and admiring", [Categories.Hobbies]),
     new PersonalValue("Wealth", "Beyond financial stability", [Categories.Career]),
-    new PersonalValue("Working Out", "Keeping fit, but not Sport", [Categories.Hobbies]),
 ]
 
 function values_by_category(categories: Categories[]): string[] {
@@ -278,8 +271,6 @@ function category_long_name(category: Categories): string {
             return "Long Term Attitudes"
         case Categories.Relationships:
             return "Relationships and Faith"
-        case Categories.Health:
-            return "Health"
         case Categories.Community:
             return "Community and Faith"
     }
