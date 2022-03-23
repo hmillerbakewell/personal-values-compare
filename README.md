@@ -12,6 +12,7 @@ Some values appear in multiple categories.
 Career:
 
  - Acknowledgement: Have your opinions heard
+ - Growth: Knowing you are changing and adapting
  - Helping Others: Working to help those around you
  - Leadership: People look to you for guidance
  - Politics: Serving the public
@@ -27,7 +28,6 @@ Community and Faith:
  - Family: Regular connection with family
  - Helping Others: Working to help those around you
  - Religion: The routine, structure, and community, as opposed to Faith
- - Reputation: The things strangers might know you for
  - Status: The higher up the ladder the better
 
 Home Environment:
@@ -36,37 +36,26 @@ Home Environment:
  - Cooking: Preparing food in your own home
  - Fresh Air: Access to a clean environment
  - Gardening: A place and the time to grow plants
- - Peace: Quiet when you need it
+ - Peace: Calm, tranquillity, silence
  - Pets: Having pets at home
  - Physical Independence: Living without routine assistance
  - Stability: Confidence that next week will be like this week
 
-Health:
-
- - Acknowledgement: Have your opinions heard
- - Appearance: How you look
- - Dancing: Alone or with others
- - Emotional Independence: Your mood is not reliant on the actions of others
- - Exercise: Things you do to keep fit, but not Sport
- - Pain Relief: Pain specific to a body part
- - Physical Independence: Living without routine assistance
- - Rest: Time to quietly recover
- - Sport: Watching or taking part in
- - Stability: Confidence that next week will be like this week
- - Talking Therapy: Regular meetings with a specialist
-
 Hobbies:
 
- - Dancing: Alone or with others
+ - Appearance: How you look
+ - Cooking: Preparing food in your own home
+ - Dancing: Structured or doing your own thing
+ - Exercise: Things you do to keep fit, but not competitive
  - Games: Boardgames, cards, computer games, etc.
  - Gardening: A place and the time to grow plants
  - Giving Gifts: Finding or making gifts for others
  - Learning: Amassing knowledge and skills
+ - Literature: Reading and writing
  - Performing Arts: Music, theatre, etc.
- - Quality Time: Being with friends and loved ones, no matter the activity
- - Quiet Hobbies: Occupied moments of calm
- - Visual Arts and Crafts: Creating or admiring
- - Working Out: Keeping fit, but not Sport
+ - Quality Time: Being with friends or loved ones, no matter the activity
+ - Sport: Competitive exercise
+ - Visual Arts and Crafts: Creating and admiring
 
 Long Term Attitudes:
 
@@ -78,14 +67,11 @@ Long Term Attitudes:
 
 Relationships and Faith:
 
- - Compassion: Recognising the needs of others
- - Emotional Independence: Your mood is not reliant on the actions of others
  - Family: Regular connection with family
  - Friendship: Deep relationships within a small group
  - Giving Gifts: Finding or making gifts for others
  - Love: Finding people to share your heart with
  - Pets: Having pets at home
- - Quality Time: Being with friends and loved ones, no matter the activity
 
 These values, and their definitions, have been determined through limited research and self-reflection,
 rather than scientific research.
@@ -97,7 +83,8 @@ to help those with limited resources determine how to prioritise.
 All of this code, including the list of values and definitions,
 is released under the MIT license (see side-bar, or the LICENSE file).
 
-This website is written using TypeScript, which is then compiled to JavaScript.
+This website is written using TypeScript, which is then compiled (transpiled) to JavaScript.
+Simply running `tsc` from the main folder should compile the project.
 
 ## Versioning
 
