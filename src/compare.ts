@@ -64,14 +64,10 @@ class ComparisonPoset {
         // How many questions to connect all components, then fully determine top n
         let questions_to_link_components = next_level - 1
 
-        // Now work out how many questions once we have linked all components
+        // Estimate how many questions once we have linked this next round of components
+        let estimate_future_rounds = Math.log(this.humanValues.length - 1) * Math.max(0, determine_top_n - completed - 1)
 
-        // Most likely scenario is binary tree
-        let remaining = Math.max(determine_top_n - completed, 1)
-        let questions_to_fill_top_spots_typical = remaining * (remaining - 1) / 2
-
-        let estimate = questions_to_link_components + 1.5 * questions_to_fill_top_spots_typical
-        return Math.floor(estimate) + 3 // plus 3 to be on the safe side
+        return Math.ceil(questions_to_link_components + estimate_future_rounds)
     }
 
     is_determined(value: string): boolean {
@@ -387,7 +383,7 @@ function draw_estimate(estimate: number) {
     div!.classList.remove("invisible")
     let estimate_text = estimate.toString()
     if (estimate < 10) {
-        estimate_text = "Under 10"
+        //estimate_text = "Under 10"
     }
     div!.innerHTML = `Estimated questions remaining: ${estimate_text}`
 }
