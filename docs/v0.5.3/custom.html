@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../static/normalize.8.0.1.css">
+    <link rel="stylesheet" href="index.css">
+    <title>Determine your personal values - introduction</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/favicon-16x16.png">
+    <script>
+        function compile_categories() {
+            let include = "include="
+            for (let ele of document.getElementsByTagName("input")) {
+                let id = ele.id
+                if (ele.checked) {
+                    include += id + ","
+                }
+            }
+            return include
+        }
+        function begin(e) {
+            let cat_string = compile_categories()
+            e.preventDefault()
+            window.location.href = 'compare.html?' + cat_string
+        }
+        function clear_boxes() {
+            for (let ele of document.getElementsByTagName("input")) {
+                ele.checked = false
+            }
+        }
+        function read_get() {
+            let break_at_question_mark = window.location.toString().split(/\?/)
+            if (break_at_question_mark.length > 1) {
+                let instructions = break_at_question_mark[1]
+                instructions.split("&").map(s => {
+                    let parts = s.split("=")
+                    if (parts[0] == "include") {
+                        clear_boxes()
+                        let cats = parts[1].split(",")
+                        cats.forEach(requested_cat => {
+                            let ele_with_id = document.getElementById(requested_cat)
+                            if (ele_with_id != undefined) {
+                                ele_with_id.checked = true
+                            }
+                        })
+                    }
+                })
+            }
+        }
+    </script>
+</head>
+
+<body onload="read_get()">
+    <div class="central-column">
+        <h1>Personal Values</h1>
+        <p>
+            This webpage helps you determine your most important five values.
+            No data leaves your computer. No cookies are stored.
+            The quiz is likely to take around four minutes.
+        </p>
+
+        <p>
+            Choose which categories of values to include from this list below,
+            and try to keep a certain goal in mind.
+            For example "What is important in my day-to-day life"
+            or "What is important for this next project".
+        </p>
+
+        <form onsubmit="begin(event)" id="category-list">
+            <input class="categories-checkbox" type="checkbox" id="Career" name="Career" value="Career">
+            <label for="Career">Career</label>
+            <input class="categories-checkbox" type="checkbox" id="Environment" name="Environment" value="Environment"
+                checked="true">
+            <label for="Environment">Home Environment</label>
+            <input class="categories-checkbox" type="checkbox" id="Health" name="Health" value="Health" checked="true">
+            <label for="Hobbies">Hobbies</label>
+            <input class="categories-checkbox" type="checkbox" id="LongTerm" name="LongTerm" value="LongTerm">
+            <label for="LongTerm">Long Term Attitudes</label>
+            <input class="categories-checkbox" type="checkbox" id="Relationships" name="Relationships"
+                value="Relationships" checked="true">
+            <label for="Relationships">Relationships</label>
+            <input class="categories-checkbox" type="checkbox" id="Community" name="Community" value="Community"
+                checked="true">
+            <label for="Community">Community and Faith</label>
+            <button id="begin-button" class="two-wide">Begin</button>
+        </form>
+
+        <p class="github">This project is <a href="https://github.com/hmillerbakewell/personal-values-compare">open
+                source</a>.</p>
+    </div>
+</body>
+
+</html>
